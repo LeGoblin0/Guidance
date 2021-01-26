@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{23B5C567-A284-A0E1-6F30-AEC7E2782167}</ProjectGuid>
+    <ProjectGuid>{F86721B1-4781-1A6F-83EB-2E477A1A9525}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.2D.Psdimporter.Editor</AssemblyName>
@@ -276,7 +276,7 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -633,42 +633,42 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PsdPlugin.csproj">
-      <Project>{3F1A638F-E764-6D21-E4E2-AFFD7846F5AD}</Project>
+      <Project>{9967D8E2-FCB4-6610-1A20-E581BBF66BBF}</Project>
       <Name>PsdPlugin</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj">
-      <Project>{47B83366-DF3C-5E1B-0B44-D99D69D37902}</Project>
+      <Project>{D9BDC866-898B-1A56-B443-E7A0B0029D44}</Project>
       <Name>Unity.InternalAPIEditorBridge.001</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Common.Editor.csproj">
-      <Project>{E12578E1-C008-7A63-D5B4-6C7677781043}</Project>
+      <Project>{D26489A3-FCE8-21AD-6785-65C5466327DC}</Project>
       <Name>Unity.2D.Common.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Editor.csproj">
-      <Project>{45646204-AC00-96C5-DEBB-F5DAD9AAE118}</Project>
+      <Project>{18139FE4-DAD1-2CB3-1A99-779E685D670A}</Project>
       <Name>Unity.2D.Animation.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
-      <Project>{7B269DB4-065D-7F8E-F861-1D9DCAAE3565}</Project>
+      <Project>{7641FDDD-94F6-2737-CBB0-BBDDD739F5F0}</Project>
       <Name>Unity.2D.Animation.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{0C0E3182-15ED-5E50-4624-8440F30AE752}</Project>
+      <Project>{A9640C9A-0B9C-75D0-41A2-79FEABEF12FB}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{728BDB64-3A24-59B1-AB6B-CD64D71923E5}</Project>
+      <Project>{4F9396FD-CB4F-16A3-CADB-9E05C126ED38}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>

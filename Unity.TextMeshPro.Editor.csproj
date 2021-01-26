@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{07BAF7D2-0D9C-96D9-3C87-5547BB08D9EC}</ProjectGuid>
+    <ProjectGuid>{B7CD0292-E66A-2AD9-09CA-743D4E2990F0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.TextMeshPro.Editor</AssemblyName>
@@ -309,7 +309,7 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -666,23 +666,23 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{4446FD20-0C63-EFDC-4D70-4261CE98E7FC}</Project>
+      <Project>{62E28807-A397-7DB5-45A4-AED7ECF53249}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{0C0E3182-15ED-5E50-4624-8440F30AE752}</Project>
+      <Project>{A9640C9A-0B9C-75D0-41A2-79FEABEF12FB}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{728BDB64-3A24-59B1-AB6B-CD64D71923E5}</Project>
+      <Project>{4F9396FD-CB4F-16A3-CADB-9E05C126ED38}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>

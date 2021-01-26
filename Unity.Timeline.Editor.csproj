@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4E9F763E-B9A2-639F-B325-1406F1A41B86}</ProjectGuid>
+    <ProjectGuid>{14D7ECB0-1446-AF72-3D37-234FF70CD829}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.Timeline.Editor</AssemblyName>
@@ -498,7 +498,7 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -855,23 +855,23 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2) (2) (4)/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/LeGoblin/Desktop/Guidance/Guidance (2)/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{EE67D07B-46FC-437A-F51B-84429BFAE47E}</Project>
+      <Project>{F371D7EF-6101-AB5B-1454-AC3F649D1EAA}</Project>
       <Name>Unity.Timeline</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{0C0E3182-15ED-5E50-4624-8440F30AE752}</Project>
+      <Project>{A9640C9A-0B9C-75D0-41A2-79FEABEF12FB}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{728BDB64-3A24-59B1-AB6B-CD64D71923E5}</Project>
+      <Project>{4F9396FD-CB4F-16A3-CADB-9E05C126ED38}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>

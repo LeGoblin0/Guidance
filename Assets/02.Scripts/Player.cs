@@ -150,14 +150,17 @@ public class Player : MonoBehaviour
                 Desh = false;
                 if (FastSpeed > 0)
                 {
+                    PlayerSens.gameObject.SetActive(false);
                     Desh = true;
                     DashTime = DefaultTime;
                 }
             }
             else
             {
+                PlayerSens.gameObject.SetActive(true);
                 DashTime -= Time.deltaTime;
                 AirMoveSpeed = AddSpeed;
+
             }
             rig.velocity = Vector3.zero;
             FastSpeed = 0;

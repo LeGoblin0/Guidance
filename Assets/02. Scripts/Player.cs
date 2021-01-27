@@ -15,7 +15,9 @@ public class Player : MonoBehaviour
     public float KnockBackPower;
     Rigidbody2D rig;
     SpriteRenderer spriteRenderer;
+    GameObject obj;
     Animator ani;
+    public Transform anImg;
 
     [Tooltip("0=공중 , 1= 지상")]
     public int Mode = 0;
@@ -29,13 +31,16 @@ public class Player : MonoBehaviour
     public float DefaultTime;
     private float DashTime;
 
+    float moveX, moveY;
+
     // Start is called before the first frame update
     void Start()
     {
+        obj = GetComponent<GameObject>();
         rig = GetComponent<Rigidbody2D>();
         AirMoveSpeed = Speed;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        ani = GetComponent<Animator>();
+        ani = anImg.GetComponent<Animator>();
     }
 
 
@@ -76,62 +81,71 @@ public class Player : MonoBehaviour
         if (Mode == 0)//공중모드
         {
 
-            /*  //마우스 포인터 따라다니면서 부드러운 이동(기획서 상 레퍼런스 영상의 움직임은 이런 느낌)
-              Vector3 Target = Camera.main.ScreenToWorldPoint(Input.mousePosition); //마우스 포인터 좌표
-              Target.z = transform.position.z;
-              transform.position = Vector3.MoveTowards(transform.position, Target, MoveSpeed * Time.deltaTime); 
-            */                          //   ㄴ마우스 포인터 좌표로 MoveTowards를 사용해서 따라옴
+            //마우스 포인터 따라다니면서 부드러운 이동(기획서 상 레퍼런스 영상의 움직임은 이런 느낌)
+            // Vector3 Target = Camera.main.ScreenToWorldPoint(Input.mousePosition); //마우스 포인터 좌표
 
-            /*  //rigidbody2d 없는 이동
-              float inputX = Input.GetAxisRaw("Horizontal"); //projectsetting에서 설정된 상하 키보드 읽어옴
-              float inputY = Input.GetAxisRaw("Vertical");   //projectsetting에서 설정된 좌우 키보드 읽어옴
-              transform.Translate(new Vector2(inputX, inputY) * Time.deltaTime * MoveSpeed); //이동 
-            */
+            //  Target.z = transform.position.z;
+            //  transform.position = Vector3.MoveTowards(transform.position, Target, AirMoveSpeed * Time.deltaTime); 
+            //   ㄴ마우스 포인터 좌표로 MoveTowards를 사용해서 따라옴
 
+            //if (Input.GetButtonDown("Horizontal"))
+            //{
+            //    spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+            //}
+            /*    
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    anImg.localScale = new Vector2(+1, 1);
+                    ani.SetInteger("Move", 2);
 
-            //rigidbody2d 있는 이동(충돌시 탱탱볼처럼 밀려나는 것때문에 일단 대각선 이동 안함
-            /*
-            if (Input.GetKey(KeyCode.UpArrow)){
-                transform.Translate(0, MoveSpeed * Time.deltaTime, 0);
+                }
+                else if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    anImg.localScale = new Vector2(-1, 1);
+                    ani.SetInteger("Move", 2);
+
+                }
+                else ani.SetInteger("Move", 1); 
             }
             else if (Input.GetKey(KeyCode.DownArrow))
             {
-                transform.Translate(0, -MoveSpeed * Time.deltaTime, 0);
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    anImg.localScale = new Vector2(+1, 1);
+                    ani.SetInteger("Move", 4);
+
+                }
+                else if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    anImg.localScale = new Vector2(-1, 1);
+                    ani.SetInteger("Move", 4);
+
+                }
+                else ani.SetInteger("Move", 5);
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
+                ani.SetInteger("Move", 3);
+                anImg.localScale = new Vector2(+1, 1);
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.Translate(-MoveSpeed * Time.deltaTime, 0, 0);
+                ani.SetInteger("Move", 3);
+                anImg.localScale = new Vector2(-1, 1);
             }
-            */
-
-            // rigidbody2d 있는 이동
-            // vector3 좌표를 projectsetting에서 설정된 상하 좌우 키 입력을 감지해서 1씩 증감(MoveSpeed 로 속도 조절);
-            //Vector2 vec = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),0)*AirMoveSpeed * Time.deltaTime;
-            if (Input.GetButtonDown("Horizontal"))
+            else
             {
-                spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+                ani.SetInteger("Move", 0);
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            { ani.SetBool("isRedy", true); ani.SetBool("isDown", true); }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
-            { ani.SetBool("isRedy", true); ani.SetBool("isUp", true); }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            { ani.SetBool("isRedy", true); ani.SetBool("isRight", true); }
-            else if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.RightArrow))
-            { ani.SetBool("isRedy", true); ani.SetBool("isUpRight", true); }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.RightArrow))
-            { ani.SetBool("isRedy", true); ani.SetBool("isDownRight", true); }
             if (Desh)
             {
 
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
-                PointX = -1;
+               PointX = -1;
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -142,6 +156,7 @@ public class Player : MonoBehaviour
             {
                 PointX = 0;
             }
+
             if (Desh)
             {
 
@@ -159,77 +174,54 @@ public class Player : MonoBehaviour
             else
             {
                 PointY = 0;
-
-                ani.SetBool("isDown", false);
-                ani.SetBool("isUp", false);
-                ani.SetBool("isRight", false);
-                ani.SetBool("isUpRight", false);
-                ani.SetBool("isDownRight", false);
-                ani.SetBool("isRedy", false);
             }
-            PlayerSens.position = new Vector3(PointX, PointY, 0) + transform.position;
+            */
+            //if (PlayerSens.gameObject.activeSelf)
+            //{
+            //    PlayerSens.position = new Vector3(PointX, PointY, 0) + transform.position;
+            //}
 
-            if(!PlayerSens.GetComponent<PlayerSenser>().Stop) transform.Translate(new Vector3(PointX, PointY, 0) * AirMoveSpeed * Time.deltaTime);
+            //if (!PlayerSens.GetComponent<PlayerSenser>().Stop)
+            //{
+            //    transform.Translate(new Vector3(PointX, PointY, 0) * AirMoveSpeed * Time.deltaTime);
+            //}
+
+            //부드러운 이동 코드
+            moveX = Input.GetAxis("Horizontal") * AirMoveSpeed * Time.deltaTime;
+            moveY = Input.GetAxis("Vertical") * AirMoveSpeed * Time.deltaTime;
+            transform.position = new Vector2(transform.position.x + moveX, transform.position.y + moveY);
+
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 FastSpeed = 1;
             }
             if(DashTime <= 0)
             {
+                rig.velocity = new Vector3(PointX, PointY, 0) * AirMoveSpeed;
                 AirMoveSpeed = Speed;
                 Desh = false;
+                rig.sharedMaterial = null;
                 if (FastSpeed > 0)
                 {
-                    PlayerSens.gameObject.SetActive(false);
+                    Debug.Log(0);
+                    AirMoveSpeed = AddSpeed;
+                    rig.sharedMaterial = DDD;
+                    rig.AddForce(new Vector3(PointX, PointY, 0) * AirMoveSpeed,ForceMode2D.Impulse);
+                    //PlayerSens.gameObject.SetActive(false);
                     Desh = true;
                     DashTime = DefaultTime;
                 }
             }
             else
             {
-                PlayerSens.gameObject.SetActive(true);
+                //PlayerSens.gameObject.SetActive(true);
                 DashTime -= Time.deltaTime;
-                AirMoveSpeed = AddSpeed;
+                //AirMoveSpeed = AddSpeed;
 
             }
-            rig.velocity = Vector3.zero;
+            //rig.velocity = Vector3.zero;
             FastSpeed = 0;
-            
-            /*
-            if (FastSpeed <= 0)
-            {
-                AddSpeed = 1;
-                if (Input.GetKey(KeyCode.UpArrow) && FastSpeed <= 0)
-                {
-                    MoveY = 1;
-                }
-                else if (Input.GetKey(KeyCode.DownArrow))
-                {
-                    MoveY = -1;
-                }
-                else MoveY = 0;
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    MoveX = 1;
-                }
-                else if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    MoveX = -1;
-                }
-                else MoveX = 0;
-            }
-            else
-            {
-                FastSpeed -= Time.deltaTime;
-            }
-            //transform.Translate(new Vector3(MoveX, MoveY, 0) * Time.deltaTime * Speed);
-            if (FastSpeed <= 0 && Input.GetKeyDown(KeyCode.Space) && MoveX * MoveX + MoveY * MoveY > 0)
-            {
-                AddSpeed = 5;//데쉬는 5배 빠름
-                FastSpeed = 0.1f;//데쉬 시간
-            }
-            rig.velocity = new Vector3(MoveX, MoveY, 0) * Speed * AddSpeed;
-            */
+       
         }
         else if (Mode == 1)//지상모드
         {
@@ -256,6 +248,7 @@ public class Player : MonoBehaviour
     }
     bool JumpNow = true;
     public Transform PlayerSens;
+    public PhysicsMaterial2D DDD;//데쉬할떄 머테리얼
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -274,21 +267,21 @@ public class Player : MonoBehaviour
                 WallKnockBack(collision.transform.position); //넉백 함수 호출
            }
            */
-            if (Mode == 0)
-            {
-                PointX *= -2;
-                PointY *= -2;
-            }
+            //if (Mode == 0)
+            //{
+            //    PointX *= -2;
+            //    PointY *= -2;
+            //}
         }
         else if (collision.gameObject.tag == "Ground") //땅과 충돌 시
         {
             JumpNow = true;//점프 가능
-            if (Mode == 0)
-            {
-                PointX *= -1;
-                PointY *= -1;
-                rig.velocity = Vector3.zero;
-            }
+            //if (Mode == 0)
+            //{
+            //    PointX *= -1;
+            //    PointY *= -1;
+            //    rig.velocity = Vector3.zero;
+            //}
         }
         else if (collision.gameObject.tag == "Baby") //아이와 충돌시
         {

@@ -174,7 +174,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 654626182}
   - component: {fileID: 654626181}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Senser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -777,7 +777,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1964091289}
   - component: {fileID: 1964091290}
-  - component: {fileID: 1964091292}
   - component: {fileID: 1964091291}
   m_Layer: 0
   m_Name: Player Sprite
@@ -795,7 +794,7 @@ Transform:
   m_GameObject: {fileID: 1964091288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1990104151}
   m_RootOrder: 0
@@ -870,29 +869,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1964091292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964091288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429aa308434c3a74cb6f69c4d7268383, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AirMoveSpeed: 0
-  GroundMoveSpeed: 0
-  JumpPower: 5
-  KnockBackDelay: 0
-  KnockBackPower: 0
-  Mode: 0
-  Speed: 0
-  AddSpeed: 0
-  DefaultTime: 0
-  Baby: {fileID: 0}
-  PlayerSens: {fileID: 0}
 --- !u!1 &1990104147
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +905,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.23
 --- !u!23 &1990104149
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1010,12 +986,14 @@ MonoBehaviour:
   JumpPower: 5
   KnockBackDelay: 0.5
   KnockBackPower: 5
+  anImg: {fileID: 1964091289}
   Mode: 0
   Speed: 5
   AddSpeed: 30
   DefaultTime: 0.1
   Baby: {fileID: 1103368406}
   PlayerSens: {fileID: 654626180}
+  DDD: {fileID: 6200000, guid: 0ae4df46b1f756a40ae1dba09b9eec6e, type: 2}
 --- !u!50 &1990104153
 Rigidbody2D:
   serializedVersion: 4

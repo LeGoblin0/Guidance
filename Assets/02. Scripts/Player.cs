@@ -49,12 +49,16 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         ani = anImg.GetComponent<Animator>();
     }
-
-
+    [SerializeField]
+    [Header("스테미너")]
+    float Stm = 100;
     private void FixedUpdate()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
-        rig.velocity = new Vector2(moveInput * Speed, rig.velocity.y);
+        if (Mode == 1)
+        {
+            moveInput = Input.GetAxisRaw("Horizontal");
+            rig.velocity = new Vector2(moveInput * Speed, rig.velocity.y);
+        }
     }
 
     // Update is called once per frame
@@ -85,33 +89,34 @@ public class Player : MonoBehaviour
     {
         
         
-        if (Input.GetKeyDown(KeyCode.Space))//모드 전환
+        if (Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.DownArrow) && Stm>0)//모드 전환
         {
             if (Mode == 1)
             {
                 Mode = 0;
-                Baby.tag = "Null";
                 Invoke("SetBaby", .1f);
-                Baby.transform.position = transform.position;
-                Baby.gameObject.SetActive(true);
+                if (!Baby.gameObject.activeSelf)
+                {
+                    Baby.tag = "Null";
+                    Baby.transform.position = transform.position;
+                    Baby.gameObject.SetActive(true);
+                }
                 ChangeMode();
                 Desh = false;
             }
         }
         if (Mode == 0)//공중모드
         {
-
-            //마우스 포인터 따라다니면서 부드러운 이동(기획서 상 레퍼런스 영상의 움직임은 이런 느낌)
-            // Vector3 Target = Camera.main.ScreenToWorldPoint(Input.mousePosition); //마우스 포인터 좌표
-
-            //  Target.z = transform.position.z;
-            //  transform.position = Vector3.MoveTowards(transform.position, Target, AirMoveSpeed * Time.deltaTime); 
-            //   ㄴ마우스 포인터 좌표로 MoveTowards를 사용해서 따라옴
-
-            //if (Input.GetButtonDown("Horizontal"))
-            //{
-            //    spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
-            //}
+            if (Stm <= 0)//스테미너가 0이면
+            {
+                Mode = 1;
+                ChangeMode();//지상모드
+            }
+            else
+            {
+                Stm -= Time.deltaTime;
+            }
+            //애니메니션
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 if (Input.GetKey(KeyCode.RightArrow))
@@ -157,63 +162,14 @@ public class Player : MonoBehaviour
             else
             {
                 ani.SetInteger("Move", 0);
-            }
-            /*    
-            if (Desh)
-            {
+            }//애니메이션 끝
 
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow))
-            {
-               PointX = -1;
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-
-                PointX = 1;
-            }
-            else
-            {
-                PointX = 0;
-            }
-
-            if (Desh)
-            {
-
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                PointY = -1;
-            }
-        
-            else if (Input.GetKey(KeyCode.UpArrow))
-            {
-                PointY = 1;
-            }
-           
-            else
-            {
-                PointY = 0;
-            }
-            */
-            //if (PlayerSens.gameObject.activeSelf)
-            //{
-            //    PlayerSens.position = new Vector3(PointX, PointY, 0) + transform.position;
-            //}
-
-            //if (!PlayerSens.GetComponent<PlayerSenser>().Stop)
-            //{
-            //    transform.Translate(new Vector3(PointX, PointY, 0) * AirMoveSpeed * Time.deltaTime);
-            //}
-
-            //transform.position = new Vector2(transform.position.x + moveX, transform.position.y + moveY);
-            //rig.velocity = Vector2.one;
-
-            if (Input.GetKeyDown(KeyCode.LeftShift))//데쉬 입력
+            if (Input.GetKeyDown(KeyCode.Space))//데쉬 입력
             {
                 FastSpeed = 1;
             }
             rig.velocity = new Vector3(moveX, moveY, 0);
+            //Debug.Log("x : " + (int)moveX+ "  y : " + (int)moveY);
             if (DashTime <= 0)//데쉬중이 아닐때
             {
                 //부드러운 이동 코드
@@ -227,18 +183,14 @@ public class Player : MonoBehaviour
                 else if (moveY < 0) LastMoveY = -1;
                 else  LastMoveY = 0;
 
-
                 AirMoveSpeed = Speed;
                 Desh = false;
                 rig.sharedMaterial = null;
                 if (FastSpeed > 0) //데쉬중이 아닐때 대쉬 시작할때
                 {
-                    //moveY = LastMoveY;
-
+                    Stm -= 20;
+                    
                     AirMoveSpeed = AddSpeed;
-                    //rig.sharedMaterial = DDD;
-                    //rig.AddForce(new Vector3(PointX, PointY, 0) * AirMoveSpeed,ForceMode2D.Impulse);
-                    //PlayerSens.gameObject.SetActive(false);
                     Desh = true;
                     DashTime = DefaultTime;
                 }
@@ -247,12 +199,9 @@ public class Player : MonoBehaviour
             {
                 moveX = LastMoveX * AirMoveSpeed;//데쉬는 항상 최고속도
                 moveY = LastMoveY * AirMoveSpeed;//데쉬는 항상 최고속도
-                //PlayerSens.gameObject.SetActive(true);
                 DashTime -= Time.deltaTime;
-                //AirMoveSpeed = AddSpeed;
 
             }
-            //rig.velocity = Vector3.zero;
             FastSpeed = 0;
        
         }
@@ -270,34 +219,7 @@ public class Player : MonoBehaviour
             {
                 PointX = 0;
             }
-            /*
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                JumpKey = true;
-                keyTime = 0;
-            }
-            else if (Input.GetKeyUp(KeyCode.F))
-            {
-                JumpKey = false;
-                if (keyTime > 0.3f)
-                    JumpPower = 8;
-                else
-                    JumpPower = 5;
-            }
 
-            if (true == JumpKey){
-                keyTime += Time.deltaTime;}
-            */
-            /*
-            if (JumpNow && Input.GetKeyDown(KeyCode.F))//기존 점프
-            {
-                isJumping = true;
-                jumpTimeCounter = jumpTime;
-                JumpNow = false;
-                rig.velocity = new Vector2(0, JumpPower);
-            }
-            transform.Translate(new Vector3(PointX, 0, 0) * Time.deltaTime * GroundMoveSpeed);
-            */
             if (JumpNow && Input.GetKeyDown(KeyCode.F))//점프
             {
                 JumpNow = false;
@@ -328,7 +250,6 @@ public class Player : MonoBehaviour
     }
     bool JumpNow = true;
     public Transform PlayerSens;
-    //public PhysicsMaterial2D DDD;//데쉬할떄 머테리얼
     /// <summary>
     /// 충돌 체크
     /// </summary>
@@ -340,24 +261,23 @@ public class Player : MonoBehaviour
             if (i == 2)
             {
                 JumpNow = true;//점프 가능
+                Stm = 100;
             }
         }
         else if (Mode == 0)
         {
             if (DashTime > 0 && (i == 1 || i == 2))
             {
-                //moveX = 0;
-                //moveY = -moveY;
                 LastMoveY = -LastMoveY;
                 DashTime = .1f;
+                Stm -= 10;
             }
 
             if (DashTime > 0 && (i == 3 || i == 4))
             {
-                //moveY = 0;
                 LastMoveX = -LastMoveX;
                 DashTime = .1f;
-                //moveX = -moveX;
+                Stm -= 10;
             }
 
         }

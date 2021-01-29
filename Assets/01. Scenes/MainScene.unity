@@ -302,7 +302,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1286,10 +1286,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1990104151}
+  - component: {fileID: 1990104152}
   - component: {fileID: 1990104150}
   - component: {fileID: 1990104149}
   - component: {fileID: 1990104148}
-  - component: {fileID: 1990104152}
   - component: {fileID: 1990104153}
   m_Layer: 0
   m_Name: Player
@@ -1404,6 +1404,7 @@ MonoBehaviour:
   Speed: 5
   AddSpeed: 30
   DefaultTime: 0.1
+  Stm: 100
   Baby: {fileID: 1103368406}
   PlayerSens: {fileID: 654626180}
 --- !u!50 &1990104153

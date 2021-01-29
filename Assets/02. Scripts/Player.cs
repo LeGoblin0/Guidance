@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            rig.gravityScale = 1;
+            rig.gravityScale = 2;
         }
     }
 
@@ -235,9 +235,11 @@ public class Player : MonoBehaviour
                     rig.velocity = new Vector2(0, JumpPower);
                     transform.Translate(new Vector3(PointX, 0, 0) * Time.deltaTime * GroundMoveSpeed);
                     jumpTimeCounter -= Time.deltaTime;
+                    rig.gravityScale = 4;
                 }
                 else
                 {
+                    rig.gravityScale = 2;
                     isJumping = false;
                 }
             }

@@ -100,6 +100,11 @@ public class Player : MonoBehaviour
                     Baby.tag = "Null";
                     Baby.transform.position = transform.position;
                     Baby.gameObject.SetActive(true);
+                    int xx = 0, yy = 0;
+                    if (Input.GetKey(KeyCode.UpArrow)) yy = 1;
+                    if (Input.GetKey(KeyCode.RightArrow)) xx = 1;
+                    if (Input.GetKey(KeyCode.LeftArrow)) xx = -1;
+                    Baby.GetComponent<Rigidbody2D>().velocity = new Vector3(-xx, -yy, 0);
                 }
                 ChangeMode();
                 Desh = false;
